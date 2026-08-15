@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
-import heroImage from "../assets/hero2.jpg";
+import heroImage from "../assets/Hero2.jpg";
 
 function Hero() {
   return (
