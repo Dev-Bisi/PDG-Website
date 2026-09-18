@@ -5,12 +5,12 @@ import { X } from "lucide-react";
 
 // Automatically import every image inside src/assets/gallery
 const galleryImages = import.meta.glob(
-  "../assets/gallery/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
+  "../assets/Gallery/*.{jpg,jpeg,png,JPG,JPEG,PNG}",
   {
     eager: true,
     query: "?url",
     import: "default",
-  }
+  },
 );
 
 function GallerySection() {
@@ -20,19 +20,17 @@ function GallerySection() {
 
   return (
     <section className="relative overflow-hidden bg-slate-50 py-20 dark:bg-[#0E1518] sm:py-24 lg:py-28">
-
       {/* Background Glow */}
       <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-yellow-400/20 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-sky-400/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-
         {/* Heading */}
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: .8 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
@@ -53,37 +51,29 @@ function GallerySection() {
         {/* Gallery */}
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-
           {images.map((image, index) => (
-
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: .9 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{
-                duration: .5,
-                delay: index * .05,
+                duration: 0.5,
+                delay: index * 0.05,
               }}
               viewport={{ once: true }}
               whileHover={{ y: -8 }}
               className="group cursor-pointer overflow-hidden rounded-3xl shadow-xl"
               onClick={() => setSelectedImage(image)}
             >
-
               <div className="overflow-hidden">
-
                 <img
                   src={image}
                   alt={`Gallery ${index + 1}`}
                   className="h-72 w-full object-cover transition duration-700 group-hover:scale-110"
                 />
-
               </div>
-
             </motion.div>
-
           ))}
-
         </div>
 
         {/* Button */}
@@ -91,28 +81,23 @@ function GallerySection() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: .2 }}
+          transition={{ delay: 0.2 }}
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-
           <Link
             to="/gallery"
             className="inline-flex rounded-full bg-yellow-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-600"
           >
             View Full Gallery
           </Link>
-
         </motion.div>
-
       </div>
 
       {/* LIGHTBOX */}
 
       <AnimatePresence>
-
         {selectedImage && (
-
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -120,7 +105,6 @@ function GallerySection() {
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-5"
           >
-
             <button
               onClick={() => setSelectedImage(null)}
               className="absolute right-6 top-6 rounded-full bg-white p-2"
@@ -130,19 +114,15 @@ function GallerySection() {
 
             <motion.img
               src={selectedImage}
-              initial={{ scale: .7 }}
+              initial={{ scale: 0.7 }}
               animate={{ scale: 1 }}
-              exit={{ scale: .7 }}
-              transition={{ duration: .3 }}
+              exit={{ scale: 0.7 }}
+              transition={{ duration: 0.3 }}
               className="max-h-[90vh] max-w-[95vw] rounded-2xl shadow-2xl"
             />
-
           </motion.div>
-
         )}
-
       </AnimatePresence>
-
     </section>
   );
 }
