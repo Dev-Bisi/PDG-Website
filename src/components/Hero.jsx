@@ -88,7 +88,7 @@ function Hero() {
             Raising{" "}
 
             <span className="text-yellow-500">
-              God
+              Godly
             </span>
 
             <br />
